@@ -33,7 +33,8 @@ Code:
 		{
 			public class Employee
 			{
-				[Required(ErrorMessageResourceType = typeof(Language), ErrorMessageResourceName = "NameRequired")]
+				[Required(ErrorMessageResourceType = typeof(Language), 
+					ErrorMessageResourceName = "NameRequired")]
 				public string Name { get; set; }
 				public string Description { get; set; }
 				public DateTime Timestamp { get; set; }
@@ -112,7 +113,8 @@ Code:
 						var neutralCulture = language.Value.Substring(0, 2);
 						if (languages.Any(t => t.StartsWith(neutralCulture)))
 						{
-							SetCultureInfo(request, languages.FirstOrDefault(i => i.StartsWith(neutralCulture)));
+							SetCultureInfo(request, 
+								languages.FirstOrDefault(i => i.StartsWith(neutralCulture)));
 							return true;
 						}
 					}
