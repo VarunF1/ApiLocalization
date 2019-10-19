@@ -1,4 +1,4 @@
-# Api Localization (Framework 4.7)
+# Api Localization (Framework 4.7.2)
 Restful api localization
 
 
@@ -35,8 +35,7 @@ Code:
 	{
 		public class Employee
 		{
-			[Required(ErrorMessageResourceType = typeof(Language), 
-				ErrorMessageResourceName = "NameRequired")]
+			[Required(ErrorMessageResourceType = typeof(Language), ErrorMessageResourceName = "NameRequired")]
 			public string Name { get; set; }
 			public string Description { get; set; }
 			public DateTime Timestamp { get; set; }
