@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Net.Http;
@@ -8,66 +10,62 @@ using System.Threading.Tasks;
 
 namespace Api.Handler
 {
-    public class LanguageMessageHandler : DelegatingHandler
+    public class InternationalizationHandler : DelegatingHandler
     {
-        private const string EnUsLang = "en-US";
-        private const string EnInLang = "en-IN";
-        private const string DefaultLang = "en-GB";
+        private readonly string _supportedLanguages = ConfigurationManager.AppSettings["Languages"];
+        private readonly string _defaultLanguage = ConfigurationManager.AppSettings["DefaultLanguage"];
 
-        private readonly List<string> _supportedLanguages = new List<string> { EnUsLang, EnInLang, DefaultLang };
-
-        private bool SetHeaderIfAcceptLanguageMatchesSupportedLanguage(HttpRequestMessage request)
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            foreach (var lang in request.Headers.AcceptLanguage)
+            var languages = _supportedLanguages.Split(',').ToList();
+
+            if (!IsSpecificCulture(request, languages))
             {
-                if (_supportedLanguages.Contains(lang.Value))
+                if (!IsNeutralCulture(request, languages))
                 {
-                    SetCulture(request, lang.Value);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private bool SetHeaderIfGlobalAcceptLanguageMatchesSupportedLanguage(HttpRequestMessage request)
-        {
-            foreach (var lang in request.Headers.AcceptLanguage)
-            {
-                var globalLang = lang.Value.Substring(0, 2);
-                if (_supportedLanguages.Any(t => t.StartsWith(globalLang)))
-                {
-                    SetCulture(request, _supportedLanguages.FirstOrDefault(i => i.StartsWith(globalLang)));
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void SetCulture(HttpRequestMessage request, string lang)
-        {
-            request.Headers.AcceptLanguage.Clear();
-            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(lang));
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(lang);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
-        }
-
-        protected override async Task<HttpResponseMessage> SendAsync(
-            HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            if (!SetHeaderIfAcceptLanguageMatchesSupportedLanguage(request))
-            {
-                // Whoops no localization found. Lets try Globalisation
-                if (!SetHeaderIfGlobalAcceptLanguageMatchesSupportedLanguage(request))
-                {
-                    // no global or localization found
-                    SetCulture(request, DefaultLang);
+                    SetCultureInfo(request, _defaultLanguage);
                 }
             }
 
             var response = await base.SendAsync(request, cancellationToken);
             return response;
+        }
+
+        private void SetCultureInfo(HttpRequestMessage request, string language)
+        {
+            request.Headers.AcceptLanguage.Clear();
+            request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(language));
+            Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+        }
+
+        private bool IsSpecificCulture(HttpRequestMessage request, IReadOnlyCollection<string> languages)
+        {
+            foreach (var language in request.Headers.AcceptLanguage)
+            {
+                if (languages.Contains(language.Value, StringComparer.CurrentCultureIgnoreCase))
+                {
+                    SetCultureInfo(request, language.Value);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool IsNeutralCulture(HttpRequestMessage request, IReadOnlyCollection<string> languages)
+        {
+            foreach (var language in request.Headers.AcceptLanguage)
+            {
+                var neutralCulture = language.Value.Substring(0, 2);
+                if (languages.Any(t => t.StartsWith(neutralCulture)))
+                {
+                    SetCultureInfo(request, languages.FirstOrDefault(i => i.StartsWith(neutralCulture)));
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }

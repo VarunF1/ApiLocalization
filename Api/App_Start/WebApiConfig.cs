@@ -1,7 +1,4 @@
 ﻿using Api.Handler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Http;
 
 namespace Api
@@ -15,7 +12,7 @@ namespace Api
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.MessageHandlers.Add(new LanguageMessageHandler());
+            config.MessageHandlers.Add(new InternationalizationHandler());
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

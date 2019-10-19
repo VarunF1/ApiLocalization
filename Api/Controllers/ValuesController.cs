@@ -11,9 +11,9 @@ namespace Api.Controllers
     public class ValuesController : ApiController
     {
         [HttpGet]
-        public IEnumerable<MyPayload> Get()
+        public IEnumerable<Employee> Get()
         {
-            var myPayLoad = new MyPayload
+            var myPayLoad = new Employee
             {
                 Description = Resources.AmazingResource.Description,
                 Timestamp = DateTime.UtcNow,
@@ -35,7 +35,7 @@ namespace Api.Controllers
         }
 
         // POST api/values
-        public IHttpActionResult Post([FromBody]MyPayload valuevalue)
+        public IHttpActionResult Post([FromBody]Employee valuevalue)
         {
             if (!ModelState.IsValid)
             {
