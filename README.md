@@ -165,50 +165,54 @@ Steps:
 2. Follow the examples...
 
 	Ex 1:
-	GET http://localhost:57502/api/Values
-	Accept-Language:da,en-US;q=0.8,en;q=0.7
-	Output:
-	{
-		"Name": "Name in en-US",
-		"Description": "Description in en-US",
-		"Timestamp": "2019-10-19T10:10:56.0184846Z"
-	}
+		
+		GET http://localhost:57502/api/Values
+		Accept-Language:da,en-US;q=0.8,en;q=0.7
+		Output:
+		{
+			"Name": "Name in en-US",
+			"Description": "Description in en-US",
+			"Timestamp": "2019-10-19T10:10:56.0184846Z"
+		}
 
 	Ex 2:
-	GET http://localhost:57502/api/Values
-	Accept-Language:en-IN
-	Output:
-	{
-		"Name": "Name in en-IN",
-		"Description": "Description in en-IN",
-		"Timestamp": "2019-10-19T10:12:12.3115222Z"
-	}
+	
+		GET http://localhost:57502/api/Values
+		Accept-Language:en-IN
+		Output:
+		{
+			"Name": "Name in en-IN",
+			"Description": "Description in en-IN",
+			"Timestamp": "2019-10-19T10:12:12.3115222Z"
+		}
 
 	Ex 3:
-	POST http://localhost:57502/api/values 
-	Content-Type: application/json
-	Accept-Language: en-IN
-	Body-Raw-JSON-Input:
-	{
-		"Description": "Private employee"
-	}
-
-	Output:
-	{
-		"Message": "The request is invalid.",
-		"ModelState": {
-			"employee.Name": [
-				"Name is required (en-IN)"
-			]
+	
+		POST http://localhost:57502/api/values 
+		Content-Type: application/json
+		Accept-Language: en-IN
+		Body-Raw-JSON-Input:
+		{
+			"Description": "Private employee"
 		}
-	}
+
+		Output:
+		{
+			"Message": "The request is invalid.",
+			"ModelState": {
+				"employee.Name": [
+					"Name is required (en-IN)"
+				]
+			}
+		}
 
 	Ex 4: To test default settings
-	GET http://localhost:57502/api/Values
-	Accept-Language:xx
-	Output:
-	{
-		"Name": "Name in en-GB",
-		"Description": "Description in en-GB",
-		"Timestamp": "2019-10-19T10:10:56.0184846Z"
-	}
+	
+		GET http://localhost:57502/api/Values
+		Accept-Language:xx
+		Output:
+		{
+			"Name": "Name in en-GB",
+			"Description": "Description in en-GB",
+			"Timestamp": "2019-10-19T10:10:56.0184846Z"
+		}
