@@ -1,2 +1,2 @@
-# ApiLocalization
+# Api Localization
 Restful api localization
