@@ -14,15 +14,17 @@ Terminology:
 
 Note:
 
-	Date is UTC. So it is same.
-	Culture is case-insensitive.
-	First, Internationalization is attempted using Specific Culture. If Specific Culture is not found then it chacks for Neutral Culture. 
-	And if, Neutral Culture is also not found then it sets the default.
+	- Date is UTC. So it is same.
+	- Culture is case-insensitive.
+	- First, Internationalization is attempted using Specific Culture. 
+	  If Specific Culture is not found then it chacks for Neutral Culture. 
+	  And if, Neutral Culture is also not found then it sets the default.
 
 
 Code:
 
 1). Create an Employee model.
+
 		using System;
 		using System.ComponentModel.DataAnnotations;
 		using Api.Resources;
@@ -39,12 +41,14 @@ Code:
 		}
 		
 2). Add the below keys in Web.config.
+		
 		<configuration>
 		  <appSettings>
 			<add key="Languages" value="en-us,en-IN,en-GB"/>
 			<add key="DefaultLanguage" value="en-GB"/>
 
 3). Create a class InternationalizationHandler and inherit DelegatingHandler.
+		
 		using System;
 		using System.Collections.Generic;
 		using System.Configuration;
@@ -62,7 +66,8 @@ Code:
 				private readonly string _supportedLanguages = ConfigurationManager.AppSettings["Languages"];
 				private readonly string _defaultLanguage = ConfigurationManager.AppSettings["DefaultLanguage"];
 
-				protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+				protected override async Task<HttpResponseMessage> 
+					SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
 				{
 					var languages = _supportedLanguages.Split(',').ToList();
 
@@ -118,9 +123,11 @@ Code:
 		}
 
 4). Put the below code line in WebApiConfig file.
+
 		config.MessageHandlers.Add(new InternationalizationHandler());
 
 5). Put below two action methods in a controller (only for testing purpose).
+
         [HttpGet]
         public IHttpActionResult Get()
         {
