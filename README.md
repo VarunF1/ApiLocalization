@@ -5,25 +5,25 @@ Restful api localization
 Terminology:
 
 	Localization (l10n): It is the process of customizing an application for a given language and region.
-	Globalization (g11n): it is the process of making an application support different languages and regions.
+	Globalization (g11n): it is the process of making applications support different languages and regions.
 	Internationalization (i18n): It is the combination of both localization and globalization.
-	Culture: It is a language and region where region is optional. Aka Locale.
-	Neutral Culture: It is a culture that has only language and not region. Like 'en' or 'de'.
+	Culture: It is a language and region where the region is optional. Aka Locale.
+	Neutral Culture: It is a culture that has only language and not a region. Like 'en' or 'de'.
 	Specific Culture: It is a culture that has both language and region. Like 'en-US' or 'en-IN'.
 
 
 Note:
 
-	- Date is UTC. So it is same.
+	- The date is UTC. So it's the same.
 	- Culture is case-insensitive.
 	- First, Internationalization is attempted using Specific Culture. 
-	  If Specific Culture is not found then it chacks for Neutral Culture. 
-	  And if, Neutral Culture is also not found then it sets the default.
+	  If Specific Culture is not found then it checks for Neutral Culture. 
+	  And if Neutral Culture is also not found, then it sets the default.
 
 
 Code:
 
-1). Create the resource files like Language.resx, Language.en-US.resx and other.
+1). Create resource files like Language.resx, Language.en-US.resx and other.
 
 2). Create an Employee model.
 
@@ -129,7 +129,7 @@ Code:
 
 	config.MessageHandlers.Add(new InternationalizationHandler());
 
-6). Put below two action methods in a controller (only for testing purpose).
+6). Put below two action methods in a controller (only for testing purposes).
 
         [HttpGet]
         public IHttpActionResult Get()
