@@ -5,9 +5,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("FW-Api-Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Harman Corporate")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("FW-Api-Tests")]
-[assembly: AssemblyCopyright("Copyright © Harman Corporate 2019")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
