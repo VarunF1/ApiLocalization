@@ -23,7 +23,7 @@ namespace Api.Handler
             {
                 if (!IsNeutralCulture(request, languages))
                 {
-                    SetCultureInfo(request, _defaultLanguage);
+                    SetCurrentCulture(request, _defaultLanguage);
                 }
             }
 
@@ -31,12 +31,17 @@ namespace Api.Handler
             return response;
         }
 
-        private void SetCultureInfo(HttpRequestMessage request, string language)
+        private void SetCurrentCulture(HttpRequestMessage request, string language)
         {
             request.Headers.AcceptLanguage.Clear();
             request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(language));
-            Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
+
+            var culture = new CultureInfo(language);
+            CultureInfo.DefaultThreadCurrentCulture = culture;
+            CultureInfo.DefaultThreadCurrentUICulture = culture;
         }
 
         private bool IsSpecificCulture(HttpRequestMessage request, IReadOnlyCollection<string> languages)
@@ -45,7 +50,7 @@ namespace Api.Handler
             {
                 if (languages.Contains(language.Value, StringComparer.CurrentCultureIgnoreCase))
                 {
-                    SetCultureInfo(request, language.Value);
+                    SetCurrentCulture(request, language.Value);
                     return true;
                 }
             }
@@ -60,7 +65,7 @@ namespace Api.Handler
                 var neutralCulture = language.Value.Substring(0, 2);
                 if (languages.Any(t => t.StartsWith(neutralCulture)))
                 {
-                    SetCultureInfo(request, languages.FirstOrDefault(i => i.StartsWith(neutralCulture)));
+                    SetCurrentCulture(request, languages.FirstOrDefault(i => i.StartsWith(neutralCulture)));
                     return true;
                 }
             }

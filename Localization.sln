@@ -5,16 +5,42 @@ VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FW-Api", "Api\FW-Api.csproj", "{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{E6CB5419-8313-4E53-86F5-D7339839AEEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Aqua|Any CPU = Aqua|Any CPU
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Template|Any CPU = Template|Any CPU
+		Vasta|Any CPU = Vasta|Any CPU
+		Volcano|Any CPU = Volcano|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Aqua|Any CPU.ActiveCfg = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Aqua|Any CPU.Build.0 = Release|Any CPU
 		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Template|Any CPU.ActiveCfg = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Template|Any CPU.Build.0 = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Vasta|Any CPU.ActiveCfg = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Vasta|Any CPU.Build.0 = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Volcano|Any CPU.ActiveCfg = Release|Any CPU
+		{6C54462E-2FB6-4960-8B83-2D21DCE70CFD}.Volcano|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Aqua|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Aqua|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Template|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Template|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Vasta|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Vasta|Any CPU.Build.0 = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Volcano|Any CPU.ActiveCfg = Release|Any CPU
+		{E6CB5419-8313-4E53-86F5-D7339839AEEA}.Volcano|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -12,13 +12,13 @@ namespace Api
             // Web API routes
             config.MapHttpAttributeRoutes();
 
-            config.MessageHandlers.Add(new InternationalizationHandler());
-
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.MessageHandlers.Add(new InternationalizationHandler());
         }
     }
 }

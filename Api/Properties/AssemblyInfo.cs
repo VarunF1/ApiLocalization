@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("Api")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Harman Corporate")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Api")]
-[assembly: AssemblyCopyright("Copyright © Harman Corporate 2019")]
+[assembly: AssemblyCopyright("")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
