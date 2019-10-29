@@ -15,7 +15,7 @@ namespace FW_Api_Tests
         public async Task ItShouldSetTheProvidedCulture()
         {
             // Arrange.
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "http://localhost/api/customers");
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "http://localhost/api/values");
             httpRequestMessage.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue("en-IN"));
 
             var handler = new InternationalizationHandler()

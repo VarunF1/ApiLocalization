@@ -36,9 +36,6 @@ namespace Api.Handler
             request.Headers.AcceptLanguage.Clear();
             request.Headers.AcceptLanguage.Add(new StringWithQualityHeaderValue(language));
 
-            //Thread.CurrentThread.CurrentCulture = new CultureInfo(language);
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo(language);
-
             var culture = new CultureInfo(language);
             CultureInfo.DefaultThreadCurrentCulture = culture;
             CultureInfo.DefaultThreadCurrentUICulture = culture;
